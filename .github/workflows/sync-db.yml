@@ -1,7 +1,7 @@
 # Mit Licence, originaly written by @Bouni, reworked by @CDFER
----
 name: "Update parts database"
 on:
+  push:
   schedule:  # 2 hours after jlcparts updates their database
     - cron: "0 5 * * *"
   workflow_dispatch:  # allow for manually trigger workflow
