@@ -1,4 +1,4 @@
-# Mit Licence, originaly written by @Bouni, reworked by @CDFER
+# Mit Licence, originaly written by @Bouni, rewritten by @CDFER
 name: "Update parts database"
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:  # allow for manually trigger workflow
 jobs:
   build_and_update:
-    name: "Update component database and frontend"
+    name: "Update component database"
     runs-on: ubuntu-22.04
     environment: github-pages
     steps:
@@ -40,7 +40,7 @@ jobs:
           pip install pandas
       - name: Update database
         run: |
-          # set -x #set bash debugging mode
+          set -x #set bash debugging mode
           
           # Create a directory and change into it
           mkdir -p db_build
@@ -61,7 +61,11 @@ jobs:
           # ls -lah # List the extracted files
           cd .. # Change back to the parent directory
 
-          python3 basic-parts-csv.py # Run the Python script to process the data
+          python3 generate-database.py # Run the Python script to gererate the database files
+
+          # Zip up the database file with 7zip and remove the original file 
+          7z a -tzip -mx=9 jlcpcb-components.zip db_build/jlcpcb-components.sqlite3
+          rm db_build/jlcpcb-components.sqlite3
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3

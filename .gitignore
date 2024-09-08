@@ -1,5 +1,5 @@
-# Limit File size to 100MiB (Github Git File Size Limit)
-find . -size +100M | cat >> .gitignore
-
 # python enviroment folder
 .venv
+
+# unzipped database is too large for github (github limit is 100mib)
+jlcpcb-components.sqlite3

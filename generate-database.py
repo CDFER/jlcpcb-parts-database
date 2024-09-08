@@ -4,7 +4,8 @@ import os
 
 os.chdir("db_build")
 
-os.rename("cache.sqlite3", "jlcpcb-components.sqlite3")
+# Rename the database file
+os.rename("cache.sqlite3", f"jlcpcb-components.sqlite3")
 
 initial_db_size = os.path.getsize("jlcpcb-components.sqlite3")
 print(f"Initial SQLite Database Size: {initial_db_size / (1024 ** 3):.2f} GiB")
@@ -22,7 +23,7 @@ cur.execute("DELETE FROM components WHERE stock < 5;")
 conn.commit()
 print(f"Deleted {cur.rowcount} components with low stock")
 
-# Create an FTS (Full-Text Search) index on multiple columns
+# Create an FTS (Full-Text Search) index on multiple columns (helps to speed up searching the database)
 cur.execute(
     """
     CREATE VIRTUAL TABLE components_fts USING fts5(
