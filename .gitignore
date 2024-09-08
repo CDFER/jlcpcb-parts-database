@@ -3,3 +3,5 @@
 
 # unzipped database is too large for github (github limit is 100mib)
 jlcpcb-components.sqlite3
+jlcpcb-components.sqlite3-shm
+jlcpcb-components.sqlite3-wal

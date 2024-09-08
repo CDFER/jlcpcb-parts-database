@@ -3,9 +3,11 @@
         "datasheet",
         "freelist",
         "ipynb",
+        "jlcparts",
         "jlcpcb",
         "lcsc",
         "reindexing",
-        "venv"
+        "venv",
+        "yaqwsx"
     ]
 }
