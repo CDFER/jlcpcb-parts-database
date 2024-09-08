@@ -22,31 +22,25 @@ jobs:
           root-reserve-mb: 512
           swap-size-mb: 1024
           remove-dotnet: 'true'
-      - name: Free more Space #https://github.com/actions/runner-images/issues/2840#issuecomment-790492173
-        run: |
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "/usr/local/share/boost"
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Show versions
-        run: |
-          sqlite3 --version
-          python3 --version
-          python3 -c "import sqlite3; import pprint; db = sqlite3.connect(':memory:'); cursor = db.execute('PRAGMA COMPILE_OPTIONS'); pprint.pprint(cursor.fetchall())"
+      # - name: Free more Space #https://github.com/actions/runner-images/issues/2840#issuecomment-790492173
+      #   run: |
+      #     sudo rm -rf /usr/share/dotnet
+      #     sudo rm -rf /opt/ghc
+      #     sudo rm -rf "/usr/local/share/boost"
+      #     sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+      # - name: Checkout
+      #   uses: actions/checkout@v4
+      # - name: Show versions
+      #   run: |
+      #     sqlite3 --version
+      #     python3 --version
+      #     python3 -c "import sqlite3; import pprint; db = sqlite3.connect(':memory:'); cursor = db.execute('PRAGMA COMPILE_OPTIONS'); pprint.pprint(cursor.fetchall())"
       - name: Install python dependencies
         run: |
           pip install pandas
-          # pip install humanize
       - name: Update database
         run: |
           set -x
-
-          # Print the current disk usage, might help with future "no disk space left" issues
-          echo "=================================================="
-          df -h
-          echo "=================================================="
 
           mkdir -p db_build
           cd db_build
@@ -66,18 +60,13 @@ jobs:
           ls -lah
           cd ..
 
-          # Print the current disk usage, might help with future "no disk space left" issues
-          echo "=================================================="
-          df -h
-          echo "=================================================="
-
           # creates the converted database in 80M split-zip files in folder db_build
           # python3 jlcparts_db_convert.py
 
           python3 basic-parts-csv.py
 
           # remove the source db, as we don't want to package that one
-          rm db_build/cache.sqlite3
+          # rm db_build/cache.sqlite3
           # some info output for sanity check
           ls -lah db_build
           du -cslh db_build
