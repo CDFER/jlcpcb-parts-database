@@ -64,8 +64,8 @@ jobs:
           python3 generate-database.py # Run the Python script to gererate the database files
 
           # Zip up the database file with 7zip and remove the original file 
-          7z a -tzip -mx=9 jlcpcb-components.zip db_build/jlcpcb-components.sqlite3
-          rm db_build/jlcpcb-components.sqlite3
+          # 7z a -tzip -mx=9 jlcpcb-components.zip db_build/jlcpcb-components.sqlite3
+          # rm db_build/jlcpcb-components.sqlite3
 
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
