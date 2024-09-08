@@ -1,0 +1,97 @@
+# Mit Licence, originaly written by @Bouni, rewritten by @CDFER
+name: "Update parts database"
+on:
+  push:
+  schedule:  # 2 hours after jlcparts updates their database
+    - cron: "0 5 * * *"
+  workflow_dispatch:  # allow for manually trigger workflow
+jobs:
+  build_and_update:
+    name: "Update component database"
+    runs-on: ubuntu-22.04
+    environment: github-pages
+    steps:
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            python3 python3-pip wget zip unzip p7zip-full sqlite3
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+      - name: Free more Space #https://github.com/actions/runner-images/issues/2840#issuecomment-790492173
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+      - name: Checkout
+        uses: actions/checkout@v4
+      # - name: Show versions
+      #   run: |
+      #     sqlite3 --version
+      #     python3 --version
+      #     python3 -c "import sqlite3; import pprint; db = sqlite3.connect(':memory:'); cursor = db.execute('PRAGMA COMPILE_OPTIONS'); pprint.pprint(cursor.fetchall())"
+      - name: Install python dependencies
+        run: |
+          pip install pandas
+      - name: Update database
+        run: |
+          set -x #set bash debugging mode
+          
+          # Create a directory and change into it
+          mkdir -p db_build
+          cd db_build
+
+          wget -q https://yaqwsx.github.io/jlcparts/data/cache.zip # Download the main zip file
+
+          VOLUMES=$(7z l cache.zip | grep "Volume Index = " | grep -Eoh "[0-9]+") # Extract volume information from the zip file
+
+          for seq in $(seq 1 $VOLUMES); do
+            CACHE=$(printf '%02d' $seq)
+            wget -q https://yaqwsx.github.io/jlcparts/data/cache.z$CACHE || true
+          done
+
+          7z x cache.zip # Extract the zip files using 7zip
+          rm -rf cache.z* # Remove zip files (both cache.zip and cache.z01-cache.z99)
+
+          # ls -lah # List the extracted files
+          cd .. # Change back to the parent directory
+
+          python3 generate-database.py # Run the Python script to gererate the database files
+
+          # Zip up the database file with 7zip and remove the original file 
+          # 7z a -tzip -mx=9 jlcpcb-components.zip db_build/jlcpcb-components.sqlite3
+          # rm db_build/jlcpcb-components.sqlite3
+
+      - name: Upload pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: github-pages
+          path: db_build
+  deploy:
+    name: "Deploy"
+    runs-on: ubuntu-20.04
+    needs: build_and_update
+    permissions:
+      actions: write
+      contents: write
+      pages: write
+      id-token: write
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      # delete-artifact
+      - name: Clean
+        uses: geekyeggo/delete-artifact@v4
+        with:
+          name: github-pages
