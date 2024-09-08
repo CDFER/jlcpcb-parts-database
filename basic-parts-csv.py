@@ -19,6 +19,10 @@ print(f"Deleted {cur.rowcount} components with low stock")
 cur.execute("VACUUM;")
 conn.commit()
 
+# Reindex database to reduce file size
+cur.execute("REINDEX;")
+conn.commit()
+
 optimized_db_size = os.path.getsize("cache.sqlite3")
 print(f"Optimized Database Size: {optimized_db_size / (1024 ** 3):.2f} GiB")
 
