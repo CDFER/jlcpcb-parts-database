@@ -24,18 +24,10 @@ cur.execute(
         lcsc,
         mfr,
         package,
-        mfr,
         description,
-        datasheet
+        datasheet,
+        content='components'
     );
-"""
-)
-
-# Populate the FTS index
-cur.execute(
-    """
-    INSERT INTO components_fts (lcsc, mfr, package, manufacturer, description, datasheet, extras)
-    SELECT lcsc, mfr, package, manufacturer, description, datasheet, extras FROM components;
 """
 )
 
