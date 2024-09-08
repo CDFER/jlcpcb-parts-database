@@ -2,8 +2,8 @@
 name: "Update parts database"
 on:
   push:
-  schedule:  # 2 hours after jlcparts updates their database
-    - cron: "0 5 * * *"
+  schedule:  # run 1 hour after yaqwsx/jlcparts updates their database everyday at 4am UTC
+    - cron: "0 4 * * *"
   workflow_dispatch:  # allow for manually trigger workflow
 jobs:
   build_and_update:
