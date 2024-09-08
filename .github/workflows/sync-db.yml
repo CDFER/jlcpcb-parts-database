@@ -63,8 +63,6 @@ jobs:
 
           python3 basic-parts-csv.py # Run the Python script to process the data
 
-          du -cslh db_build # list the size of the directory and its contents
-
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
