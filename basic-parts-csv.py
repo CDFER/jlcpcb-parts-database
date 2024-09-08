@@ -35,10 +35,9 @@ cur.execute(
         lcsc,
         mfr,
         package,
-        manufacturer,
+        mfr,
         description,
-        datasheet,
-        extras
+        datasheet
     );
 """
 )
