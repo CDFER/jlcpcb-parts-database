@@ -6,7 +6,7 @@ This repository takes the massive SQLite database from [yaqwsx/jlcparts](https:/
 
 ### Files
 
-* **Basic and Preferred Parts CSV**: A lightweight (~2MB) CSV file containing basic and preferred parts information.
+* **Basic and Preferred Parts CSV**: A lightweight (~3MB) CSV file containing basic and preferred parts information.
 * **In-Stock Components SQLite Database**: A filtered SQLite database (~1GB) containing only components with 5 or more items in stock.
 
 ### Why?
