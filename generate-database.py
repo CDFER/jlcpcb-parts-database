@@ -1,6 +1,7 @@
 import pandas as pd
 import sqlite3
 import os
+import csv
 
 os.chdir("db_build")
 
@@ -45,6 +46,23 @@ conn.commit()
 # Vacuum database to reduce file size
 cur.execute("VACUUM;")
 conn.commit()
+
+# fix incorrectly labled prefered parts from file
+component_codes = []
+with open(os.path.join("scraped", "ComponentList.csv"), "r") as f:
+    reader = csv.reader(f)
+    next(reader)  # Skip the header row
+    for row in reader:
+        component_codes.append(row[0])
+
+for code in component_codes:
+    cur.execute("SELECT 1 FROM components WHERE lcsc = ?", (code,))
+    if cur.fetchone():
+        cur.execute(
+            "UPDATE components SET preferred = 1 WHERE lcsc = ? AND basic = 0 AND preferred = 0",
+            (code,),
+        )
+        conn.commit()
 
 optimized_db_size = os.path.getsize("jlcpcb-components.sqlite3")
 print(f"Optimized Database Size: {optimized_db_size / (1024 ** 3):.2f} GiB")

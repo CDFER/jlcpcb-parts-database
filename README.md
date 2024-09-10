@@ -1,6 +1,5 @@
 ![csv file preview](/images/CSV.png)
 
-
 # JLCPCB Parts Database
 
 This repository takes the massive SQLite database from [yaqwsx/jlcparts](https://github.com/yaqwsx/jlcparts) and processes it into two convenient files:
@@ -24,6 +23,7 @@ Both files are automatically updated using github actions and hosted on GitHub P
 ### Example Usage
 
 Check out the included Jupyter Notebook `sqlite-search.ipynb` for an example of how to download the database and perform a basic search on the SQLite database using a SQLite query. For CSV files I can recommend the pandas library for python.
+
 
 ### Contributions
 
