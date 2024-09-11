@@ -56,6 +56,7 @@ with open(fileLocation, "r") as f:
     for row in reader:
         component_codes.append(row[0])
 
+preferred_parts_corrected = 0
 for code in component_codes:
     cur.execute("SELECT 1 FROM components WHERE lcsc = ?", (code,))
     if cur.fetchone():
@@ -64,6 +65,9 @@ for code in component_codes:
             (code,),
         )
         conn.commit()
+        preferred_parts_corrected+=1
+        
+print(f"Preferred Parts Corrected: {preferred_parts_corrected}")
 
 optimized_db_size = os.path.getsize("jlcpcb-components.sqlite3")
 print(f"Optimized Database Size: {optimized_db_size / (1024 ** 3):.2f} GiB")
