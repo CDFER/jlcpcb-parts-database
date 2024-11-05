@@ -45,7 +45,7 @@ This repository uses a GitHub Actions workflow (`.github/workflows/sync-db.yml`)
 
 
 1. **Trigger**
-	* The workflow triggers daily at 5:00 AM UTC, two hours after yaqwsx/jlcparts updates their database, on code commit, or manually using the "Run workflow" button.
+	* The workflow triggers daily at 6:00 AM UTC, three hours after yaqwsx/jlcparts updates their database, on code commit, or manually using the "Run workflow" button.
 
 
 2. **Download Database**
