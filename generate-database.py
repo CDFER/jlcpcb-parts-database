@@ -72,7 +72,7 @@ print(f"Preferred Parts Corrected: {preferred_parts_corrected}")
 optimized_db_size = os.path.getsize("jlcpcb-components.sqlite3")
 print(f"Optimized Database Size: {optimized_db_size / (1024 ** 3):.2f} GiB")
 
-# Retrieve basic/preferred components ($0 for loading feeders)
+# Retrieve basic/preferred components ($0 for loading feeders) and exclude "0201" package
 cur.execute(
     """
     SELECT * FROM v_components 
