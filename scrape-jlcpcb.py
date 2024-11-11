@@ -3,9 +3,9 @@ import requests
 import re
 import csv
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
-today_date_str = datetime.now().strftime('%Y/%m/%d')
+today_date_str = datetime.now(tz=timezone.utc).strftime('%Y/%m/%d')
 url = "https://jlcpcb.com/api/overseas-pcb-order/v1/shoppingCart/smtGood/selectSmtComponentList/v2"
 
 headers = {
@@ -43,7 +43,7 @@ def update_component(components, lcsc_code):
     components.append(new_component)
     return True
 
-print(f"Current date is: {today_date_str}")
+print(f"Current UTC date is: {today_date_str}")
 
 file_location  = os.path.join("scraped", "ComponentList.csv")
 print(f"ComponentList.csv: {os.path.getsize(file_location)/1024:.1f}KiB")
@@ -95,14 +95,14 @@ while empty_page == False:
 
 print(f"Found {total_unseen_components} unseen components, current total components {len(components)}")
 
-todays_date = datetime.now()
+todays_date = datetime.now(tz=timezone.utc)
 cutoff_date = todays_date - timedelta(days=14) #Components not seen in 14 days are removed from the list
 
 pre_remove_component_count = len(components)
 
 components = [
     c for c in components 
-    if (datetime.strptime(c['Last Seen'], '%Y/%m/%d') >= cutoff_date)
+    if (datetime.strptime(c['Last Seen'], '%Y/%m/%d').replace(tzinfo=timezone.utc) >= cutoff_date)
 ]
 
 print(f"Removed {pre_remove_component_count-len(components)} components because they haven't been seen in 14 days, current total components {len(components)}")
