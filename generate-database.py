@@ -49,12 +49,11 @@ conn.commit()
 
 # fix incorrectly labled prefered parts from file
 component_codes = []
-fileLocation = os.path.join("..", os.path.join("scraped", "ComponentList.csv"))
-with open(fileLocation, "r") as f:
-    reader = csv.reader(f)
-    next(reader)  # Skip the header row
+file_location  = os.path.join("..", os.path.join("scraped", "ComponentList.csv"))
+with open(file_location, "r") as f:
+    reader = csv.DictReader(f)
     for row in reader:
-        component_codes.append(row[0])
+        component_codes.append(int(row['lcsc']))
 
 preferred_parts_corrected = 0
 for code in component_codes:
