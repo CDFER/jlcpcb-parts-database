@@ -13,7 +13,7 @@ headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0",
     "Accept": "application/json, text/plain, */*",
     "Accept-Language": "en-GB,en;q=0.5",
-    "Accept-Encoding": "gzip, deflate, br, zstd",
+    "Accept-Encoding": "gzip, deflate, br",
     "Content-Type": "application/json",
     "Origin": "https://jlcpcb.com",
     "DNT": "1",
@@ -43,14 +43,15 @@ def update_component(components, lcsc_code):
     components.append(new_component)
     return True
 
-file_location  = os.path.join("scraped", "ComponentList.csv")
+print(f"Current date is: {today_date_str}")
 
+file_location  = os.path.join("scraped", "ComponentList.csv")
+print(f"ComponentList.csv: {os.path.getsize(file_location)/1024:.1f}KiB")
 with open(file_location, "r", newline="") as f:
     reader = csv.DictReader(f)
     components = list(reader)
-    # print(list(reader))
-    # for row in reader:
-    #     component_codes.append(row["lcsc"])
+    
+print(f"Loaded {len(components)} components from {file_location}")
 
 empty_page = False
 page = 1
@@ -92,14 +93,23 @@ while empty_page == False:
     
     time.sleep(3)  # Pause (try to not get rate limited)
 
+print(f"Found {total_unseen_components} unseen components, current total components {len(components)}")
+
 todays_date = datetime.now()
 cutoff_date = todays_date - timedelta(days=14) #Components not seen in 14 days are removed from the list
+
+pre_remove_component_count = len(components)
 
 components = [
     c for c in components 
     if (datetime.strptime(c['Last Seen'], '%Y/%m/%d') >= cutoff_date)
 ]
 
+print(f"Removed {pre_remove_component_count-len(components)} components because they haven't been seen in 14 days, current total components {len(components)}")
+
 with open(file_location, "w", newline="") as f:
     writer = csv.DictWriter(f, fieldnames=components[0].keys())
     writer.writeheader()
+    writer.writerows(components)
+    
+print(f"ComponentList.csv: {os.path.getsize(file_location)/1024:.1f}KiB")
