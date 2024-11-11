@@ -43,7 +43,7 @@ def update_component(components, lcsc_code):
     components.append(new_component)
     return True
 
-file_location  = os.path.join("..", os.path.join("scraped", "ComponentList.csv"))
+file_location  = os.path.join("scraped", "ComponentList.csv")
 
 with open(file_location, "r", newline="") as f:
     reader = csv.DictReader(f)

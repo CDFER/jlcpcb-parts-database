@@ -6,7 +6,7 @@ on:
   workflow_dispatch:  # allow for manually trigger workflow
 
 jobs:
-  format-code:
+  scrape-jlc:
     runs-on: ubuntu-latest
 
     permissions:
