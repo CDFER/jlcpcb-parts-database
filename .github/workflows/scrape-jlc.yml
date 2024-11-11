@@ -1,0 +1,33 @@
+name: Scrape JLCPCB Basic/Prefered Components
+
+on: 
+  schedule:  # run 2 hours after yaqwsx/jlcparts updates their database everyday at 3am UTC
+    - cron: "0 5 * * *"
+  workflow_dispatch:  # allow for manually trigger workflow
+
+jobs:
+  format-code:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            python3 python3-pip
+      
+      - name: Scrape JLCPCB
+        run: |
+          python3 scrape-jlcpcb.py # Run the Python script
+
+      # Commit all changed files back to the repository
+      - uses: stefanzweifel/git-auto-commit-action@v5
