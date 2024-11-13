@@ -1,4 +1,4 @@
-![CSV File Preview](/images/CSV.png)
+![CSV File Preview](/images/CSV.avif)
 
 # JLCPCB Parts Database
 

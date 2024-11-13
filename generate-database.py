@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3
 import os
-import csv
+from datetime import datetime, timezone
 
 os.chdir("db_build")
 
@@ -47,13 +47,23 @@ conn.commit()
 cur.execute("VACUUM;")
 conn.commit()
 
-# fix incorrectly labled prefered parts from file
-component_codes = []
-file_location  = os.path.join("..", os.path.join("scraped", "ComponentList.csv"))
-with open(file_location, "r") as f:
-    reader = csv.DictReader(f)
-    for row in reader:
-        component_codes.append(int(row['lcsc']))
+# Load Scraped Components List
+file_location = os.path.join("..", os.path.join("scraped", "ComponentList.csv"))
+df = pd.read_csv(file_location)
+
+# Convert date columns to datetime with UTC timezone
+df["First Seen"] = pd.to_datetime(df["First Seen"], format="%Y/%m/%d", utc=True)
+df["Last Seen"] = pd.to_datetime(df["Last Seen"], format="%Y/%m/%d", utc=True)
+
+# Calculate time differences
+now = datetime.now(timezone.utc)
+df["Days Since First Seen"] = (now - df["First Seen"]).dt.days
+df["Days Since Last Seen"] = (now - df["Last Seen"]).dt.days
+
+# Filter components
+component_codes = (
+    df[(df["Days Since First Seen"] >= 1) & (df["Days Since Last Seen"] < 2)]["lcsc"].astype(int).tolist()
+)
 
 preferred_parts_corrected = 0
 for code in component_codes:
@@ -64,8 +74,8 @@ for code in component_codes:
             (code,),
         )
         conn.commit()
-        preferred_parts_corrected+=1
-        
+        preferred_parts_corrected += 1
+
 print(f"Preferred Parts Corrected: {preferred_parts_corrected}")
 
 optimized_db_size = os.path.getsize("jlcpcb-components.sqlite3")
