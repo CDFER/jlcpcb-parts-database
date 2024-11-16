@@ -17,7 +17,7 @@ cur = conn.cursor()
 cur.execute("PRAGMA journal_mode = WAL")  # Enable Write-Ahead Logging (WAL) for improved performance and concurrency
 cur.execute("PRAGMA synchronous = NORMAL")  # Set the synchronous mode to NORMAL, which balances safety and performance
 cur.execute("PRAGMA temp_store = MEMORY")  # Store temporary tables and indices in memory for faster access
-cur.execute("PRAGMA mmap_size = 10737418240")  # Set the maximum memory map size to 10 GiB
+cur.execute("PRAGMA mmap_size = 536870912")  # Set the maximum memory map size to 512MiB
 
 # Delete components with low stock
 cur.execute("DELETE FROM components WHERE stock < 5;")
