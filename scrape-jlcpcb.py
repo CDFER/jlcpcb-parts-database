@@ -1,3 +1,6 @@
+# This script fetches a list of components from JLCPCB's API, updates a local CSV file with new components,
+# and records the "First Seen" and "Last Seen" dates for each component. It is scheduled to run daily via GitHub Actions.
+
 import os
 import requests
 import re
@@ -5,9 +8,13 @@ import csv
 import time
 from datetime import datetime, timezone
 
+# Get the current date in UTC
 today_date_str = datetime.now(tz=timezone.utc).strftime("%Y/%m/%d")
+
+# URL for fetching component list from JLCPCB API
 url = "https://jlcpcb.com/api/overseas-pcb-order/v1/shoppingCart/smtGood/selectSmtComponentList/v2"
 
+# Headers for the HTTP GET request
 headers = {
     "Host": "jlcpcb.com",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:130.0) Gecko/20100101 Firefox/130.0",
@@ -19,8 +26,6 @@ headers = {
     "DNT": "1",
     "Connection": "keep-alive",
     "Referer": "https://jlcpcb.com/parts/basic_parts",
-    "Sec-Fetch-Dest": "empty",
-    "Sec-Fetch-Dest": "empty",
     "Sec-Fetch-Mode": "cors",
     "Sec-Fetch-Site": "same-origin",
     "Priority": "u=0",
@@ -30,6 +35,11 @@ headers = {
 
 
 def update_component(components, lcsc_code):
+    """
+    Update the component list with the given LCSC code.
+    If the component already exists, update the 'Last Seen' field.
+    If the component does not exist, add it with 'First Seen' and 'Last Seen' set to today's date.
+    """
     for component in components:
         if component["lcsc"] == lcsc_code:
             component["Last Seen"] = today_date_str
@@ -40,9 +50,15 @@ def update_component(components, lcsc_code):
     components.append(new_component)
     return True
 
+
+# Path to the CSV file containing the component list
 file_location = os.path.join("scraped", "ComponentList.csv")
+
+# Print the initial size of the component list file
 print(f"ComponentList.csv: {os.path.getsize(file_location)/1024:.1f}KiB")
-with open(file_location, "r", newline="") as f:
+
+# Load existing components from the CSV file
+with open(file_location, "r", newline="", encoding="utf-8") as f:
     reader = csv.DictReader(f)
     components = list(reader)
 
@@ -52,7 +68,7 @@ empty_page = False
 page = 1
 total_unseen_components = 0
 
-while empty_page == False:
+while empty_page == False and page < 64:
     request_json = {
         "currentPage": page,
         "pageSize": 100,
@@ -70,7 +86,6 @@ while empty_page == False:
     }
 
     response = requests.post(url, headers=headers, json=request_json)
-    print(f"Page {page}: {response.status_code} {response.headers}")
     unseen_components = 0
 
     if response.status_code == 200:
@@ -80,19 +95,23 @@ while empty_page == False:
             if update_component(components, lcsc_code):
                 unseen_components += 1
                 total_unseen_components += 1
+    else:
+        print(f"Failed to fetch data for page {page}. Status code: {response.status_code} Headers: {response.headers}")
 
-    print(f"\tFound {len(page_components)} Components, {unseen_components} Unseen Components")
+    print(f"Page {page}: {response.status_code} Found {unseen_components} new components, {len(page_components)} previously seen components")
+    
     if len(page_components) < 1:
         empty_page = True
     page += 1
 
     time.sleep(3)  # Pause (try to not get rate limited)
 
-print(f"Found {total_unseen_components} unseen components, current total components {len(components)}")
+print(f"Added {total_unseen_components} new components, current total components {len(components)}")
 
 with open(file_location, "w", newline="") as f:
     writer = csv.DictWriter(f, fieldnames=components[0].keys())
     writer.writeheader()
     writer.writerows(components)
 
+# Print the final size of the component list file
 print(f"ComponentList.csv: {os.path.getsize(file_location)/1024:.1f}KiB")
