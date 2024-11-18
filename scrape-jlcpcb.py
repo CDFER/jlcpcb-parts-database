@@ -89,11 +89,12 @@ def get_part_data_and_update_csv(lcsc_number, rows):
 
     if not response["success"]:
         print(f"Failed to retrieve data: {response['msg']}")
-        return
+        return rows
 
     part_details = response["data"]["data"]
     part_details["leastNumber"] = part_details["leastNumber"] or 0
 
+    found = False
     for index, row in enumerate(rows):
         if len(row) > 0 and row[0] == str(lcsc_number):
             rows[index] = [
@@ -106,8 +107,25 @@ def get_part_data_and_update_csv(lcsc_number, rows):
                 part_details["specialComponentFee"],
                 part_details["componentLibraryType"],
             ]
+            found = True
             break
-    print(f"Updated {lcsc_number} in the csv file")
+
+    if not found:
+        rows.append(
+            [
+                lcsc_number,
+                part_details["assemblyMode"],
+                part_details["assemblyModeBatch"],
+                part_details["assemblyProcess"],
+                part_details["leastNumber"],
+                part_details["lossNumber"],
+                part_details["specialComponentFee"],
+                part_details["componentLibraryType"],
+            ]
+        )
+        print(f"Added {lcsc_number} to the csv file")
+    else:
+        print(f"Updated {lcsc_number} in the csv file")
     return rows
 
 
@@ -216,12 +234,12 @@ with open(assembly_file_location, "r", newline="") as read_file:
 # Check for parts not in ComponentList.csv
 for lcsc_number in components:
     if lcsc_number not in assembly_components:
-        get_part_data_and_update_csv(int(lcsc_number), rows)
+        rows = get_part_data_and_update_csv(int(lcsc_number), rows)
 
 # Randomly check 100 components already in the list
 random_components = random.sample([c for c in components if c != ""], 50)
 for lcsc_number in random_components:
-    get_part_data_and_update_csv(int(lcsc_number), rows)
+    rows = get_part_data_and_update_csv(int(lcsc_number), rows)
 
 
 with open(assembly_file_location, "w", newline="") as write_file:
