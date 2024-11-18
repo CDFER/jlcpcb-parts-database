@@ -95,8 +95,11 @@ df_sorted = df.sort_values(by=["category", "subcategory", "package"])
 # Merge assembly details
 file_location = os.path.join("..", os.path.join("scraped", "assembly-details.csv"))
 df = pd.read_csv(file_location)
+
+df_filtered = df[df["lcsc"].isin(df_sorted["lcsc"])]
+
 df_sorted = pd.merge(
-    df_sorted, df[["lcsc", "Assembly Process", "Min Order Qty", "Attrition Qty"]], on="lcsc", how="right"
+    df_sorted, df_filtered[["lcsc", "Assembly Process", "Min Order Qty", "Attrition Qty"]], on="lcsc", how="right"
 )
 
 # Save sorted DataFrame to CSV
