@@ -88,9 +88,8 @@ cur.execute(
 )
 filtered_components = cur.fetchall()
 
-# Create Pandas DataFrame and sort components
-df = pd.DataFrame(filtered_components, columns=[desc[0] for desc in cur.description])
-df_sorted = df.sort_values(by=["category", "subcategory", "package"])
+# Create Pandas DataFrame
+df_sorted = pd.DataFrame(filtered_components, columns=[desc[0] for desc in cur.description])
 
 # Merge assembly details
 file_location = os.path.join("..", os.path.join("scraped", "assembly-details.csv"))
@@ -101,6 +100,8 @@ df_filtered = df[df["lcsc"].isin(df_sorted["lcsc"])]
 df_sorted = pd.merge(
     df_sorted, df_filtered[["lcsc", "Assembly Process", "Min Order Qty", "Attrition Qty"]], on="lcsc", how="right"
 )
+
+df_sorted = df_sorted.sort_values(by=["category", "subcategory", "package"])
 
 # Save sorted DataFrame to CSV
 df_sorted.to_csv("jlcpcb-components-basic-preferred.csv", index=False, header=True)
