@@ -6,6 +6,7 @@ import requests
 import re
 import csv
 import time
+import random
 from datetime import datetime, timezone
 
 # Get the current date in UTC
@@ -49,6 +50,65 @@ def update_component(components, lcsc_code):
     new_component = {"lcsc": lcsc_code, "First Seen": today_date_str, "Last Seen": today_date_str}
     components.append(new_component)
     return True
+
+
+def get_part_data(lcsc_number: int) -> dict:
+    """Get data for a given LCSC number from the API."""
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
+    }
+
+    response = requests.get(
+        f"https://cart.jlcpcb.com/shoppingCart/smtGood/getComponentDetail?componentCode=C{lcsc_number}",
+        headers=headers,
+        timeout=10,
+    )
+
+    if response.status_code != requests.codes.ok:
+        return {"success": False, "msg": "non-OK HTTP response status"}
+
+    data = response.json()
+
+    if not data.get("data"):
+        return {
+            "success": False,
+            "msg": "returned JSON data does not have expected 'data' attribute",
+        }
+
+    if data["data"]["componentCode"] != f"C{lcsc_number}":
+        return {
+            "success": False,
+            "msg": "returned missing or incorrect componentCode",
+        }
+
+    return {"success": True, "data": data}
+
+
+def get_part_data_and_update_csv(lcsc_number, rows):
+    response = get_part_data(lcsc_number)
+
+    if not response["success"]:
+        print(f"Failed to retrieve data: {response['msg']}")
+        return
+
+    part_details = response["data"]["data"]
+    part_details["leastNumber"] = part_details["leastNumber"] or 0
+
+    for index, row in enumerate(rows):
+        if len(row) > 0 and row[0] == str(lcsc_number):
+            rows[index] = [
+                lcsc_number,
+                part_details["assemblyMode"],
+                part_details["assemblyModeBatch"],
+                part_details["assemblyProcess"],
+                part_details["leastNumber"],
+                part_details["lossNumber"],
+                part_details["specialComponentFee"],
+                part_details["componentLibraryType"],
+            ]
+            break
+    print(f"Updated {lcsc_number} in the csv file")
+    return rows
 
 
 # Path to the CSV file containing the component list
@@ -98,8 +158,10 @@ while empty_page == False and page < 64:
     else:
         print(f"Failed to fetch data for page {page}. Status code: {response.status_code} Headers: {response.headers}")
 
-    print(f"Page {page}: {response.status_code} Found {unseen_components} new components, {len(page_components)} previously seen components")
-    
+    print(
+        f"Page {page}: {response.status_code} Found {unseen_components} new components, {len(page_components)} previously seen components"
+    )
+
     if len(page_components) < 1:
         empty_page = True
     page += 1
@@ -115,3 +177,53 @@ with open(file_location, "w", newline="") as f:
 
 # Print the final size of the component list file
 print(f"ComponentList.csv: {os.path.getsize(file_location)/1024:.1f}KiB")
+
+
+list_file_location = os.path.join("scraped", "ComponentList.csv")
+assembly_file_location = os.path.join("scraped", "assembly-details.csv")
+
+with open(list_file_location, "r", newline="") as file:
+    reader = csv.reader(file)
+    components = [row[0] for row in reader]
+
+with open(assembly_file_location, "r", newline="") as file:
+    reader = csv.reader(file)
+    assembly_components = [row[0] for row in reader]
+
+try:
+    with open(assembly_file_location, "r", newline="") as read_file:
+        pass
+except FileNotFoundError:
+    with open(assembly_file_location, "w", newline="") as write_file:
+        writer = csv.writer(write_file)
+        writer.writerow(
+            [
+                "lcsc",
+                "Assembly Type",
+                "Assembly Type Batch",
+                "Assembly Process",
+                "Min Order Qty",
+                "Attrition Qty",
+                "Special Component Fee",
+                "Component Library Type",
+            ]
+        )
+
+with open(assembly_file_location, "r", newline="") as read_file:
+    reader = csv.reader(read_file)
+    rows = [row for row in reader]
+
+# Check for parts not in ComponentList.csv
+for lcsc_number in components:
+    if lcsc_number not in assembly_components:
+        get_part_data_and_update_csv(int(lcsc_number), rows)
+
+# Randomly check 100 components already in the list
+random_components = random.sample([c for c in components if c != ""], 50)
+for lcsc_number in random_components:
+    get_part_data_and_update_csv(int(lcsc_number), rows)
+
+
+with open(assembly_file_location, "w", newline="") as write_file:
+    writer = csv.writer(write_file)
+    writer.writerows(rows)

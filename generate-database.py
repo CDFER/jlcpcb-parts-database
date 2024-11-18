@@ -61,9 +61,7 @@ df["Days Since First Seen"] = (now - df["First Seen"]).dt.days
 df["Days Since Last Seen"] = (now - df["Last Seen"]).dt.days
 
 # Filter components
-component_codes = (
-    df[(df["Days Since First Seen"] >= 1) & (df["Days Since Last Seen"] < 2)]["lcsc"].astype(int).tolist()
-)
+component_codes = df[(df["Days Since First Seen"] >= 1) & (df["Days Since Last Seen"] < 2)]["lcsc"].astype(int).tolist()
 
 preferred_parts_corrected = 0
 for code in component_codes:
@@ -93,6 +91,13 @@ filtered_components = cur.fetchall()
 # Create Pandas DataFrame and sort components
 df = pd.DataFrame(filtered_components, columns=[desc[0] for desc in cur.description])
 df_sorted = df.sort_values(by=["category", "subcategory", "package"])
+
+# Merge assembly details
+file_location = os.path.join("..", os.path.join("scraped", "assembly-details.csv"))
+df = pd.read_csv(file_location)
+df_sorted = pd.merge(
+    df_sorted, df[["lcsc", "Assembly Process", "Min Order Qty", "Attrition Qty"]], on="lcsc", how="right"
+)
 
 # Save sorted DataFrame to CSV
 df_sorted.to_csv("jlcpcb-components-basic-preferred.csv", index=False, header=True)
