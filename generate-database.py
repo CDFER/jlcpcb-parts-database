@@ -103,6 +103,9 @@ df_sorted = pd.merge(
 
 df_sorted = df_sorted.sort_values(by=["category", "subcategory", "package"])
 
+# Remove parts with missing price fields
+df_sorted = df_sorted.drop(df_sorted[df_sorted['price'] == '[]'].index)
+
 # Save sorted DataFrame to CSV
 df_sorted.to_csv("jlcpcb-components-basic-preferred.csv", index=False, header=True)
 
