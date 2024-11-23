@@ -146,45 +146,45 @@ empty_page = False
 page = 1
 total_unseen_components = 0
 
-# while empty_page == False and page < 64:
-#     request_json = {
-#         "currentPage": page,
-#         "pageSize": 100,
-#         "keyword": None,
-#         "componentLibraryType": "base",
-#         "preferredComponentFlag": True,
-#         "stockFlag": None,
-#         "stockSort": None,
-#         "firstSortName": None,
-#         "secondSortName": None,
-#         "componentBrand": None,
-#         "componentSpecification": None,
-#         "componentAttributes": [],
-#         "searchSource": "search",
-#     }
+while empty_page == False and page < 64:
+    request_json = {
+        "currentPage": page,
+        "pageSize": 100,
+        "keyword": None,
+        "componentLibraryType": "base",
+        "preferredComponentFlag": True,
+        "stockFlag": None,
+        "stockSort": None,
+        "firstSortName": None,
+        "secondSortName": None,
+        "componentBrand": None,
+        "componentSpecification": None,
+        "componentAttributes": [],
+        "searchSource": "search",
+    }
 
-#     response = requests.post(url, headers=headers, json=request_json)
-#     unseen_components = 0
+    response = requests.post(url, headers=headers, json=request_json)
+    unseen_components = 0
 
-#     if response.status_code == 200:
-#         page_components = re.findall(r'"componentCode":"C(\d+)"', response.text)
-#         for component in page_components:
-#             lcsc_code = component
-#             if update_component(components, lcsc_code):
-#                 unseen_components += 1
-#                 total_unseen_components += 1
-#     else:
-#         print(f"Failed to fetch data for page {page}. Status code: {response.status_code} Headers: {response.headers}")
+    if response.status_code == 200:
+        page_components = re.findall(r'"componentCode":"C(\d+)"', response.text)
+        for component in page_components:
+            lcsc_code = component
+            if update_component(components, lcsc_code):
+                unseen_components += 1
+                total_unseen_components += 1
+    else:
+        print(f"Failed to fetch data for page {page}. Status code: {response.status_code} Headers: {response.headers}")
 
-#     print(
-#         f"Page {page}: {response.status_code} Found {unseen_components} new components, {len(page_components)} previously seen components"
-#     )
+    print(
+        f"Page {page}: {response.status_code} Found {unseen_components} new components, {len(page_components)} previously seen components"
+    )
 
-#     if len(page_components) < 1:
-#         empty_page = True
-#     page += 1
+    if len(page_components) < 1:
+        empty_page = True
+    page += 1
 
-#     time.sleep(3)  # Pause (try to not get rate limited)
+    time.sleep(3)  # Pause (try to not get rate limited)
 
 print(f"Added {total_unseen_components} new components, current total components {len(components)}")
 
