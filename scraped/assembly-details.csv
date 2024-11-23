@@ -1793,7 +1793,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 463863,manualWeld,manualWeld,THT,5,5,0.0,expand
 463873,manualWeld,manualWeld,THT,5,5,0.0,expand
 464080,manualWeld,manualWeld,THT,5,5,0.0,expand
-464238,manualWeld,manualWeld,THT,5,5,0.0,expand
+464238,manualWeld,manualWeld,THT,5,0,0.0,expand
 476315,manualWeld,manualWeld,THT,5,5,0.0,expand
 476344,smtWeld,smtWeld,SMT,1,0,0.0,expand
 476345,smtWeld,smtWeld,SMT,5,0,0.0,expand
@@ -1904,7 +1904,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 626224,manualWeld,manualWeld,THT,5,5,0.0,expand
 626225,manualWeld,manualWeld,THT,5,5,0.0,expand
 626226,manualWeld,manualWeld,THT,5,5,0.0,expand
-626252,manualWeld,manualWeld,THT,5,5,0.0,expand
+626252,manualWeld,manualWeld,THT,5,0,0.0,expand
 626253,manualWeld,manualWeld,THT,5,5,0.0,expand
 626336,manualWeld,manualWeld,THT,5,5,0.0,expand
 626341,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -1940,7 +1940,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 626408,manualWeld,manualWeld,THT,5,5,0.0,expand
 626409,manualWeld,manualWeld,THT,5,5,0.0,expand
 626410,manualWeld,manualWeld,THT,5,5,0.0,expand
-626411,manualWeld,manualWeld,THT,5,5,0.0,expand
+626411,manualWeld,manualWeld,THT,5,0,0.0,expand
 626412,manualWeld,manualWeld,THT,5,5,0.0,expand
 626413,manualWeld,manualWeld,THT,5,5,0.0,expand
 626414,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -1987,7 +1987,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 626472,manualWeld,manualWeld,THT,5,5,0.0,expand
 626489,smtWeld,smtWeld,SMT,1,0,0.0,expand
 626513,manualWeld,manualWeld,THT,5,5,0.0,expand
-626514,manualWeld,manualWeld,THT,5,5,0.0,expand
+626514,manualWeld,manualWeld,THT,5,0,0.0,expand
 626535,manualWeld,manualWeld,THT,5,5,0.0,expand
 626570,smtWeld,smtWeld,SMT,1,0,0.0,expand
 626615,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -2033,7 +2033,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 633093,manualWeld,manualWeld,THT,5,5,0.0,expand
 633105,manualWeld,manualWeld,THT,5,5,0.0,expand
 633109,manualWeld,manualWeld,THT,5,5,0.0,expand
-633115,manualWeld,manualWeld,THT,5,5,0.0,expand
+633115,manualWeld,manualWeld,THT,5,0,0.0,expand
 633148,manualWeld,manualWeld,THT,5,5,0.0,expand
 633150,manualWeld,manualWeld,THT,5,5,0.0,expand
 633152,manualWeld,manualWeld,THT,5,5,0.0,expand
