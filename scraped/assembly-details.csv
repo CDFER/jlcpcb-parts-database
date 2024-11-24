@@ -1660,7 +1660,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 231319,manualWeld,manualWeld,THT,2,0,0.0,expand
 232876,manualWeld,manualWeld,THT,5,5,0.0,expand
 233235,manualWeld,manualWeld,THT,5,5,0.0,expand
-233624,manualWeld,manualWeld,THT,5,5,0.0,expand
+233624,manualWeld,manualWeld,THT,5,0,0.0,expand
 233637,manualWeld,manualWeld,THT,5,5,0.0,expand
 194275,manualWeld,manualWeld,THT,5,5,0.0,expand
 236260,smtWeld,smtWeld,SMT,1,0,0.0,expand
@@ -1799,7 +1799,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 476345,smtWeld,smtWeld,SMT,5,0,0.0,expand
 476384,manualWeld,manualWeld,THT,5,5,0.0,expand
 476389,manualWeld,manualWeld,THT,5,5,0.0,expand
-495216,manualWeld,manualWeld,THT,5,5,0.0,expand
+495216,manualWeld,manualWeld,THT,5,0,0.0,expand
 502957,manualWeld,manualWeld,THT,5,5,0.0,expand
 502966,manualWeld,manualWeld,THT,5,5,0.0,expand
 504067,smtWeld,smtWeld,SMT,5,0,0.0,expand
@@ -1885,7 +1885,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 626178,manualWeld,manualWeld,THT,5,5,0.0,expand
 626179,smtWeld,smtWeld,SMT,2,0,0.0,expand
 626180,manualWeld,manualWeld,THT,5,0,0.0,expand
-626182,manualWeld,manualWeld,THT,5,5,0.0,expand
+626182,manualWeld,manualWeld,THT,5,0,0.0,expand
 626183,manualWeld,manualWeld,THT,5,0,0.0,expand
 626184,manualWeld,manualWeld,THT,5,5,0.0,expand
 626185,manualWeld,manualWeld,THT,5,0,0.0,expand
@@ -1984,7 +1984,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 626469,manualWeld,manualWeld,THT,5,5,0.0,expand
 626470,manualWeld,manualWeld,THT,5,5,0.0,expand
 626471,manualWeld,manualWeld,THT,5,5,0.0,expand
-626472,manualWeld,manualWeld,THT,5,5,0.0,expand
+626472,manualWeld,manualWeld,THT,5,0,0.0,expand
 626489,smtWeld,smtWeld,SMT,1,0,0.0,expand
 626513,manualWeld,manualWeld,THT,5,5,0.0,expand
 626514,manualWeld,manualWeld,THT,5,0,0.0,expand
@@ -2110,7 +2110,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2688987,manualWeld,manualWeld,THT,5,5,0.0,expand
 2688988,manualWeld,manualWeld,THT,5,5,0.0,expand
 2689023,manualWeld,manualWeld,THT,5,5,0.0,expand
-2689038,manualWeld,manualWeld,THT,5,5,0.0,expand
+2689038,manualWeld,manualWeld,THT,5,0,0.0,expand
 2689041,manualWeld,manualWeld,THT,5,5,0.0,expand
 2689061,manualWeld,manualWeld,THT,5,0,0.0,expand
 2689107,manualWeld,manualWeld,THT,5,5,0.0,expand
