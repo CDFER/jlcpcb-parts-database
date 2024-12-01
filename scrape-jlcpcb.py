@@ -236,8 +236,8 @@ for lcsc_number in components:
     if lcsc_number not in assembly_components:
         rows = get_part_data_and_update_csv(int(lcsc_number), rows)
 
-# Randomly check 100 components already in the list
-random_components = random.sample([c for c in components if c != ""], 100)
+# Randomly check components already in the list
+random_components = random.sample([c for c in components if c != ""], 200)
 for lcsc_number in random_components:
     rows = get_part_data_and_update_csv(int(lcsc_number), rows)
 
