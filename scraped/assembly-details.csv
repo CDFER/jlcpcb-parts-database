@@ -1710,7 +1710,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 240170,smtWeld,smtWeld,SMT,5,5,0.0,expand
 246996,smtWeld,smtWeld,SMT,5,5,0.0,expand
 255554,manualWeld,manualWeld,THT,5,5,0.0,expand
-255555,manualWeld,manualWeld,THT,5,5,0.0,expand
+255555,manualWeld,manualWeld,THT,5,0,0.0,expand
 255748,manualWeld,manualWeld,THT,5,0,0.0,expand
 258222,smtWeld,smtWeld,SMT,1,0,0.0,expand
 258466,smtWeld,smtWeld,SMT,5,5,0.0,expand
@@ -2564,7 +2564,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 41375128,smtWeld,smtWeld,SMT,0,4,0.0,expand
 41375129,smtWeld,smtWeld,SMT,10,4,0.0,expand
 41375130,smtWeld,smtWeld,SMT,10,4,0.0,expand
-41375133,smtWeld,smtWeld,SMT,0,4,0.0,expand
+41375133,smtWeld,smtWeld,SMT,10,4,0.0,expand
 41375134,smtWeld,smtWeld,SMT,5,2,0.0,expand
 41375135,smtWeld,smtWeld,SMT,0,2,0.0,expand
 41375136,smtWeld,smtWeld,SMT,0,4,0.0,expand
@@ -2574,14 +2574,14 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 41376097,smtWeld,smtWeld,SMT,5,2,0.0,expand
 41376098,smtWeld,smtWeld,SMT,5,2,0.0,expand
 41376099,smtWeld,smtWeld,SMT,5,2,0.0,expand
-41376100,smtWeld,smtWeld,SMT,0,2,0.0,expand
+41376100,smtWeld,smtWeld,SMT,5,2,0.0,expand
 41376101,smtWeld,smtWeld,SMT,0,2,0.0,expand
 41376102,smtWeld,smtWeld,SMT,0,2,0.0,expand
 41376398,smtWeld,smtWeld,SMT,0,2,0.0,expand
 41376399,smtWeld,smtWeld,SMT,5,2,0.0,expand
-41376400,smtWeld,smtWeld,SMT,0,4,0.0,expand
+41376400,smtWeld,smtWeld,SMT,5,4,0.0,expand
 41376401,smtWeld,smtWeld,SMT,5,2,0.0,expand
-41376402,smtWeld,smtWeld,SMT,0,2,0.0,expand
+41376402,smtWeld,smtWeld,SMT,5,2,0.0,expand
 41376403,smtWeld,smtWeld,SMT,0,4,0.0,expand
 41376404,smtWeld,smtWeld,SMT,0,2,0.0,expand
 41376405,smtWeld,smtWeld,SMT,5,4,0.0,expand
@@ -2590,7 +2590,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 41376408,smtWeld,smtWeld,SMT,0,2,0.0,expand
 41376409,smtWeld,smtWeld,SMT,0,2,0.0,expand
 41410781,smtWeld,smtWeld,SMT,0,2,0.0,expand
-41410795,smtWeld,smtWeld,SMT,0,4,0.0,expand
+41410795,smtWeld,smtWeld,SMT,15,4,0.0,expand
 41410801,smtWeld,smtWeld,SMT,0,6,0.0,expand
 41411743,smtWeld,smtWeld,SMT,5,2,0.0,expand
 41411747,smtWeld,smtWeld,SMT,0,0,0.0,expand
