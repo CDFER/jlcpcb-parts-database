@@ -1931,7 +1931,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 626397,manualWeld,manualWeld,THT,5,0,0.0,expand
 626398,manualWeld,manualWeld,THT,5,5,0.0,expand
 626399,manualWeld,manualWeld,THT,5,5,0.0,expand
-626402,manualWeld,manualWeld,THT,5,5,0.0,expand
+626402,manualWeld,manualWeld,THT,5,0,0.0,expand
 626403,manualWeld,manualWeld,THT,5,5,0.0,expand
 626404,manualWeld,manualWeld,THT,5,5,0.0,expand
 626405,manualWeld,manualWeld,THT,5,0,0.0,expand
@@ -1977,12 +1977,12 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 626462,manualWeld,manualWeld,THT,5,5,0.0,expand
 626463,manualWeld,manualWeld,THT,5,5,0.0,expand
 626464,manualWeld,manualWeld,THT,5,5,0.0,expand
-626465,manualWeld,manualWeld,THT,5,5,0.0,expand
+626465,manualWeld,manualWeld,THT,5,0,0.0,expand
 626466,manualWeld,manualWeld,THT,5,0,0.0,expand
 626467,manualWeld,manualWeld,THT,5,0,0.0,expand
 626468,manualWeld,manualWeld,THT,5,0,0.0,expand
 626469,manualWeld,manualWeld,THT,5,5,0.0,expand
-626470,manualWeld,manualWeld,THT,5,5,0.0,expand
+626470,manualWeld,manualWeld,THT,5,0,0.0,expand
 626471,manualWeld,manualWeld,THT,5,0,0.0,expand
 626472,manualWeld,manualWeld,THT,5,0,0.0,expand
 626489,smtWeld,smtWeld,SMT,1,0,0.0,expand
@@ -2094,7 +2094,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 1323283,smtWeld,smtWeld,SMT,5,0,0.0,expand
 1585501,manualWeld,manualWeld,THT,5,0,0.0,expand
 1978374,manualWeld,manualWeld,THT,5,0,0.0,expand
-1979610,manualWeld,manualWeld,THT,5,5,0.0,expand
+1979610,manualWeld,manualWeld,THT,5,0,0.0,expand
 1979626,manualWeld,manualWeld,THT,5,5,0.0,expand
 1979636,manualWeld,manualWeld,THT,5,5,0.0,expand
 1979903,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -2689,7 +2689,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 124766,smtWeld,smtWeld,SMT,5,5,0.0,expand
 124768,smtWeld,smtWeld,SMT,5,5,0.0,expand
 124776,smtWeld,smtWeld,SMT,5,5,0.0,expand
-124789,manualWeld,manualWeld,THT,5,5,0.0,expand
+124789,smtWeld,smtWeld,SMT,5,5,0.0,expand
 124790,smtWeld,smtWeld,SMT,5,5,0.0,expand
 124799,smtWeld,smtWeld,SMT,5,5,0.0,expand
 124800,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -2697,7 +2697,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 124816,manualWeld,manualWeld,THT,5,5,0.0,expand
 126755,manualWeld,manualWeld,THT,5,5,0.0,expand
 135859,manualWeld,manualWeld,THT,5,5,0.0,expand
-135896,manualWeld,manualWeld,THT,5,5,0.0,expand
+135896,manualWeld,manualWeld,THT,1,0,0.0,expand
 135897,manualWeld,manualWeld,THT,1,0,0.0,expand
 135920,manualWeld,manualWeld,THT,5,5,0.0,expand
 135937,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -2738,7 +2738,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 183710,manualWeld,manualWeld,THT,5,5,0.0,expand
 202859,manualWeld,manualWeld,THT,5,5,0.0,expand
 217648,manualWeld,manualWeld,THT,5,5,0.0,expand
-241461,manualWeld,manualWeld,THT,5,5,0.0,expand
+241461,manualWeld,manualWeld,THT,1,0,0.0,expand
 246415,smtWeld,smtWeld,SMT,5,5,0.0,expand
 246856,manualWeld,manualWeld,THT,5,5,0.0,expand
 246999,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -2982,10 +2982,10 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 1521880,manualWeld,manualWeld,THT,5,5,0.0,expand
 1521898,manualWeld,manualWeld,THT,5,5,0.0,expand
 1521905,manualWeld,manualWeld,THT,5,5,0.0,expand
-1521914,manualWeld,manualWeld,THT,5,5,0.0,expand
+1521914,manualWeld,manualWeld,THT,1,0,0.0,expand
 1521929,manualWeld,manualWeld,THT,1,0,0.0,expand
 1521941,manualWeld,manualWeld,THT,5,5,0.0,expand
-1521963,manualWeld,manualWeld,THT,5,5,0.0,expand
+1521963,manualWeld,manualWeld,THT,1,0,0.0,expand
 1521965,manualWeld,manualWeld,THT,1,0,0.0,expand
 1521969,manualWeld,manualWeld,THT,5,5,0.0,expand
 1522002,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -3005,7 +3005,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 1623672,manualWeld,manualWeld,THT,1,0,0.0,expand
 1623677,manualWeld,manualWeld,THT,1,0,0.0,expand
 1623678,manualWeld,manualWeld,THT,1,0,0.0,expand
-1623679,manualWeld,manualWeld,THT,1,0,0.0,expand
+1623679,smtWeld,smtWeld,SMT,1,0,0.0,expand
 1623692,manualWeld,manualWeld,THT,1,0,0.0,expand
 1623693,smtWeld,smtWeld,SMT,1,0,0.0,expand
 1623694,manualWeld,manualWeld,THT,1,0,0.0,expand
@@ -3025,7 +3025,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 1623781,smtWeld,smtWeld,SMT,1,0,0.0,expand
 1623782,manualWeld,manualWeld,THT,1,0,0.0,expand
 1623783,manualWeld,manualWeld,THT,1,0,0.0,expand
-1623834,manualWeld,manualWeld,THT,1,0,0.0,expand
+1623834,smtWeld,smtWeld,SMT,1,0,0.0,expand
 1854033,manualWeld,manualWeld,THT,5,5,0.0,expand
 1974065,manualWeld,manualWeld,THT,1,0,0.0,expand
 1976329,manualWeld,manualWeld,THT,1,0,0.0,expand
@@ -3128,7 +3128,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2856310,manualWeld,manualWeld,THT,5,5,0.0,expand
 2859576,manualWeld,manualWeld,THT,5,0,0.0,expand
 2859604,manualWeld,manualWeld,THT,5,5,0.0,expand
-2860813,manualWeld,manualWeld,THT,5,5,0.0,expand
+2860813,manualWeld,manualWeld,THT,5,0,0.0,expand
 2860972,manualWeld,manualWeld,THT,5,5,0.0,expand
 2861363,manualWeld,manualWeld,THT,5,5,0.0,expand
 2861371,manualWeld,manualWeld,THT,5,0,0.0,expand
@@ -3166,7 +3166,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2904902,manualWeld,manualWeld,THT,5,5,0.0,expand
 2905607,manualWeld,manualWeld,THT,5,5,0.0,expand
 2905610,manualWeld,manualWeld,THT,5,0,0.0,expand
-2906779,manualWeld,manualWeld,THT,5,5,0.0,expand
+2906779,manualWeld,manualWeld,THT,5,0,0.0,expand
 2908308,manualWeld,manualWeld,THT,5,5,0.0,expand
 2913033,manualWeld,manualWeld,THT,5,5,0.0,expand
 2913904,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -3189,7 +3189,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2936849,manualWeld,manualWeld,THT,5,5,0.0,expand
 2941408,manualWeld,manualWeld,THT,5,5,0.0,expand
 2943195,manualWeld,manualWeld,THT,5,5,0.0,expand
-2944844,manualWeld,manualWeld,THT,5,5,0.0,expand
+2944844,manualWeld,manualWeld,THT,1,0,0.0,expand
 2960332,manualWeld,manualWeld,THT,5,5,0.0,expand
 2973644,manualWeld,manualWeld,THT,1,0,0.0,expand
 2973651,manualWeld,manualWeld,THT,1,0,0.0,expand
