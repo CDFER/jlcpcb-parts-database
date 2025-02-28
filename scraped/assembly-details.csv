@@ -1998,7 +1998,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 626625,manualWeld,manualWeld,THT,5,0,0.0,expand
 626627,manualWeld,manualWeld,THT,5,0,0.0,expand
 626629,manualWeld,manualWeld,THT,5,0,0.0,expand
-626630,manualWeld,manualWeld,THT,5,5,0.0,expand
+626630,manualWeld,manualWeld,THT,5,0,0.0,expand
 626631,manualWeld,manualWeld,THT,5,0,0.0,expand
 626632,manualWeld,manualWeld,THT,5,5,0.0,expand
 626633,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -2332,7 +2332,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2919345,manualWeld,manualWeld,THT,5,5,0.0,expand
 2919346,manualWeld,manualWeld,THT,5,0,0.0,expand
 2919347,manualWeld,manualWeld,THT,5,5,0.0,expand
-2919349,manualWeld,manualWeld,THT,5,5,0.0,expand
+2919349,manualWeld,manualWeld,THT,5,0,0.0,expand
 2919350,manualWeld,manualWeld,THT,5,5,0.0,expand
 2919351,manualWeld,manualWeld,THT,5,5,0.0,expand
 2919352,manualWeld,manualWeld,THT,2,0,0.0,expand
@@ -2660,7 +2660,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 33182,manualWeld,manualWeld,THT,5,5,0.0,expand
 39877,smtWeld,smtWeld,SMT,2,0,0.0,expand
 63429,manualWeld,manualWeld,THT,5,5,0.0,expand
-67495,manualWeld,manualWeld,THT,5,5,0.0,expand
+67495,smtWeld,smtWeld,SMT,5,5,0.0,expand
 73056,manualWeld,manualWeld,THT,5,0,0.0,expand
 73057,manualWeld,manualWeld,THT,5,0,0.0,expand
 82122,manualWeld,manualWeld,THT,1,0,0.0,expand
@@ -3215,7 +3215,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2992000,manualWeld,manualWeld,THT,5,5,0.0,expand
 2997131,manualWeld,manualWeld,THT,5,5,0.0,expand
 2999058,manualWeld,manualWeld,THT,5,0,0.0,expand
-3003563,manualWeld,manualWeld,THT,5,5,0.0,expand
+3003563,manualWeld,manualWeld,THT,1,0,0.0,expand
 3008463,manualWeld,manualWeld,THT,5,5,0.0,expand
 3011291,manualWeld,manualWeld,THT,5,0,0.0,expand
 3013910,manualWeld,manualWeld,THT,1,0,0.0,expand
@@ -3446,3 +3446,5 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 42371755,smtWeld,smtWeld,SMT,15,4,0.0,expand
 42394399,smtWeld,smtWeld,SMT,2,0,0.0,expand
 18199121,smtWeld,smtWeld,SMT,5,4,0.0,expand
+19077566,smtWeld,smtWeld,SMT,5,2,0.0,expand
+19077589,smtWeld,smtWeld,SMT,5,2,0.0,expand
