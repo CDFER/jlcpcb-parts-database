@@ -2,8 +2,8 @@
 
 ### Step 1: Install Python and VSCode
 
-1. Install Python https://www.python.org/downloads/
-2. Install VSCode https://code.visualstudio.com/Download
+1. Install Python <https://www.python.org/downloads/>
+2. Install VSCode <https://code.visualstudio.com/Download>
 
 ### Step 2: Install Required Extensions in VSCode
 
@@ -15,7 +15,7 @@
 
 1. Open the `libraryCreatorScript.ipynb` file in VSCode.
 2. Select a kernel using the kernel picker in the top right.
-	![Select a kernel using the kernel picker in the top right](images/native-kernel-picker.avif)
+ ![Select a kernel using the kernel picker in the top right](images/native-kernel-picker.avif)
 3. Click "Select another Kernel".
 4. Click "Python Environments".
 5. Click "Create Python Environment".
