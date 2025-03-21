@@ -1598,7 +1598,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 102682,smtWeld,smtWeld,SMT,5,5,0.0,expand
 110745,smtWeld,smtWeld,SMT,10,4,0.0,expand
 110746,smtWeld,smtWeld,SMT,10,4,0.0,expand
-112767,manualWeld,manualWeld,THT,5,5,0.0,expand
+112767,manualWeld,manualWeld,THT,5,0,0.0,expand
 112769,manualWeld,manualWeld,THT,5,5,0.0,expand
 112792,manualWeld,manualWeld,THT,5,5,0.0,expand
 125252,manualWeld,manualWeld,THT,5,0,0.0,expand
@@ -2393,7 +2393,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2934674,smtWeld,smtWeld,SMT,5,0,0.0,expand
 2934762,manualWeld,manualWeld,THT,5,5,0.0,expand
 2934763,manualWeld,manualWeld,THT,5,5,0.0,expand
-2934764,manualWeld,manualWeld,THT,5,5,0.0,expand
+2934764,manualWeld,manualWeld,THT,5,0,0.0,expand
 2934961,manualWeld,manualWeld,THT,5,5,0.0,expand
 2935074,manualWeld,manualWeld,THT,5,5,0.0,expand
 2935076,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -3075,7 +3075,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2762649,manualWeld,manualWeld,THT,5,5,0.0,expand
 2762650,manualWeld,manualWeld,THT,1,0,0.0,expand
 2762658,manualWeld,manualWeld,THT,1,0,0.0,expand
-2762660,manualWeld,manualWeld,THT,5,5,0.0,expand
+2762660,manualWeld,manualWeld,THT,1,0,0.0,expand
 2762711,manualWeld,manualWeld,THT,5,5,0.0,expand
 2762712,manualWeld,manualWeld,THT,1,0,0.0,expand
 2762714,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -3089,7 +3089,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2762736,manualWeld,manualWeld,THT,1,0,0.0,expand
 2762739,manualWeld,manualWeld,THT,5,5,0.0,expand
 2762741,manualWeld,manualWeld,THT,1,0,0.0,expand
-2762743,manualWeld,manualWeld,THT,5,5,0.0,expand
+2762743,manualWeld,manualWeld,THT,1,0,0.0,expand
 2762744,manualWeld,manualWeld,THT,5,5,0.0,expand
 2762746,manualWeld,manualWeld,THT,5,5,0.0,expand
 2762748,manualWeld,manualWeld,THT,1,0,0.0,expand
@@ -3457,3 +3457,4 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 18199184,smtWeld,smtWeld,SMT,5,5,0.0,expand
 18199189,smtWeld,smtWeld,SMT,2,0,0.0,expand
 18199116,smtWeld,smtWeld,SMT,15,4,0.0,expand
+18199192,smtWeld,smtWeld,SMT,2,0,0.0,expand
