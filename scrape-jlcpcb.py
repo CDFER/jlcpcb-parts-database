@@ -237,7 +237,7 @@ for lcsc_number in components:
         rows = get_part_data_and_update_csv(int(lcsc_number), rows)
 
 # Randomly check components already in the list
-random_components = random.sample([c for c in components if c != ""], 200)
+random_components = random.sample([c for c in components if c != ""], 400)
 for lcsc_number in random_components:
     rows = get_part_data_and_update_csv(int(lcsc_number), rows)
 
