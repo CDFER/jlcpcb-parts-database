@@ -246,7 +246,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 17593,smtWeld,smtWeld,SMT,20,10,0.0,base
 17594,smtWeld,smtWeld,SMT,20,10,0.0,expand
 17604,smtWeld,smtWeld,SMT,20,10,0.0,base
-17606,smtWeld,smtWeld,SMT,20,10,0.0,expand
+17606,smtWeld,smtWeld,SMT,20,12,0.0,expand
 17614,smtWeld,smtWeld,SMT,20,10,0.0,base
 17616,smtWeld,smtWeld,SMT,20,10,0.0,expand
 17617,smtWeld,smtWeld,SMT,20,10,0.0,base
@@ -549,7 +549,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 72043,smtWeld,smtWeld,SMT,5,1,0.0,expand
 74192,smtWeld,smtWeld,SMT,1,0,0.0,expand
 75501,smtWeld,smtWeld,SMT,5,2,0.0,expand
-75510,smtWeld,smtWeld,SMT,5,0,0.0,expand
+75510,smtWeld,smtWeld,SMT,2,0,0.0,expand
 76590,smtWeld,smtWeld,SMT,20,10,0.0,expand
 78395,smtWeld,smtWeld,SMT,5,2,0.0,base
 79988,smtWeld,smtWeld,SMT,1,0,0.0,expand
@@ -1011,7 +1011,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 7502697,smtWeld,smtWeld,SMT,20,6,0.0,expand
 7502699,smtWeld,smtWeld,SMT,20,8,0.0,expand
 7502701,smtWeld,smtWeld,SMT,20,6,0.0,expand
-7502702,smtWeld,smtWeld,SMT,20,6,0.0,expand
+7502702,smtWeld,smtWeld,SMT,20,8,0.0,expand
 7502707,smtWeld,smtWeld,SMT,15,4,0.0,expand
 7502708,smtWeld,smtWeld,SMT,15,4,0.0,expand
 7502710,smtWeld,smtWeld,SMT,15,4,0.0,expand
@@ -1715,7 +1715,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 258222,smtWeld,smtWeld,SMT,1,0,0.0,expand
 258466,smtWeld,smtWeld,SMT,5,5,0.0,expand
 265389,manualWeld,manualWeld,THT,5,5,0.0,expand
-266191,manualWeld,manualWeld,THT,5,5,0.0,expand
+266191,manualWeld,manualWeld,THT,5,0,0.0,expand
 267339,smtWeld,smtWeld,SMT,5,5,0.0,expand
 273640,smtWeld,smtWeld,SMT,1,0,0.0,expand
 274660,smtWeld,smtWeld,SMT,1,0,0.0,expand
@@ -1803,7 +1803,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 502957,manualWeld,manualWeld,THT,5,0,0.0,expand
 502966,manualWeld,manualWeld,THT,5,0,0.0,expand
 504067,smtWeld,smtWeld,SMT,5,0,0.0,expand
-504121,manualWeld,manualWeld,THT,5,5,0.0,expand
+504121,smtWeld,smtWeld,SMT,1,0,0.0,expand
 504175,manualWeld,manualWeld,THT,5,5,0.0,expand
 505844,manualWeld,manualWeld,THT,2,0,0.0,expand
 505846,manualWeld,manualWeld,THT,2,0,0.0,expand
