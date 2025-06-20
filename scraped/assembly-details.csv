@@ -118,7 +118,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 5605,smtWeld,smtWeld,SMT,1,0,0.0,base
 5613,smtWeld,smtWeld,SMT,1,0,0.0,expand
 5625,smtWeld,smtWeld,SMT,1,0,0.0,expand
-5672,smtWeld,smtWeld,SMT,20,8,0.0,expand
+5672,smtWeld,smtWeld,SMT,5,8,0.0,expand
 5947,smtWeld,smtWeld,SMT,1,0,0.0,base
 6186,smtWeld,smtWeld,SMT,2,0,0.0,base
 6187,smtWeld,smtWeld,SMT,5,2,0.0,base
@@ -901,7 +901,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2990414,smtWeld,smtWeld,SMT,5,0,0.0,expand
 2990416,smtWeld,smtWeld,SMT,5,0,0.0,expand
 2990473,smtWeld,smtWeld,SMT,20,8,0.0,expand
-2990493,smtWeld,smtWeld,SMT,5,5,0.0,expand
+2990493,smtWeld,smtWeld,SMT,15,5,0.0,expand
 2990917,manualWeld,manualWeld,THT,2,0,0.0,expand
 2991058,manualWeld,manualWeld,THT,2,0,0.0,expand
 2991080,manualWeld,manualWeld,THT,2,0,0.0,expand
@@ -1026,7 +1026,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 7502726,smtWeld,smtWeld,SMT,10,4,0.0,expand
 7502730,smtWeld,smtWeld,SMT,10,4,0.0,expand
 18199086,smtWeld,smtWeld,SMT,15,4,0.0,expand
-18199087,smtWeld,smtWeld,SMT,20,10,0.0,expand
+18199087,smtWeld,smtWeld,SMT,15,10,0.0,expand
 18199088,smtWeld,smtWeld,SMT,15,4,0.0,expand
 18199090,smtWeld,smtWeld,SMT,15,4,0.0,expand
 18199093,smtWeld,smtWeld,SMT,15,4,0.0,expand
@@ -2980,7 +2980,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 970831,manualWeld,manualWeld,THT,5,5,0.0,expand
 1521879,manualWeld,manualWeld,THT,1,0,0.0,expand
 1521880,manualWeld,manualWeld,THT,1,0,0.0,expand
-1521898,manualWeld,manualWeld,THT,1,0,0.0,expand
+1521898,smtWeld,smtWeld,SMT,1,0,0.0,expand
 1521905,manualWeld,manualWeld,THT,1,0,0.0,expand
 1521914,manualWeld,manualWeld,THT,1,0,0.0,expand
 1521929,manualWeld,manualWeld,THT,1,0,0.0,expand
@@ -3488,3 +3488,4 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 89811,smtWeld,smtWeld,SMT,20,6,0.0,expand
 42432283,smtWeld,smtWeld,SMT,5,1,0.0,expand
 42432160,smtWeld,smtWeld,SMT,5,2,0.0,expand
+18199185,smtWeld,smtWeld,SMT,5,5,0.0,expand
