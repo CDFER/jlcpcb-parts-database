@@ -2216,7 +2216,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 2896217,manualWeld,manualWeld,THT,5,5,0.0,expand
 2896223,manualWeld,manualWeld,THT,5,5,0.0,expand
 2896224,manualWeld,manualWeld,THT,5,5,0.0,expand
-2896225,manualWeld,manualWeld,THT,5,5,0.0,expand
+2896225,manualWeld,manualWeld,THT,2,0,0.0,expand
 2896226,manualWeld,manualWeld,THT,5,5,0.0,expand
 2896254,manualWeld,manualWeld,THT,5,5,0.0,expand
 2896258,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -3492,7 +3492,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 18199146,smtWeld,smtWeld,SMT,5,4,0.0,expand
 18199092,smtWeld,smtWeld,SMT,15,4,0.0,expand
 19077581,smtWeld,smtWeld,SMT,5,2,0.0,expand
-18199186,smtWeld,smtWeld,SMT,5,4,0.0,expand
+18199186,smtWeld,smtWeld,SMT,5,2,0.0,expand
 7502689,smtWeld,smtWeld,SMT,10,4,0.0,expand
 7502690,smtWeld,smtWeld,SMT,10,4,0.0,expand
 7502698,smtWeld,smtWeld,SMT,20,6,0.0,expand
@@ -3504,7 +3504,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 7502721,manualWeld,manualWeld,THT,5,5,0.0,expand
 7502722,manualWeld,manualWeld,THT,5,5,0.0,expand
 7502723,manualWeld,manualWeld,THT,5,5,0.0,expand
-7502724,manualWeld,manualWeld,THT,5,5,0.0,expand
+7502724,smtWeld,smtWeld,SMT,10,4,0.0,expand
 7502725,manualWeld,manualWeld,THT,5,5,0.0,expand
 7502731,manualWeld,manualWeld,THT,5,5,0.0,expand
 17179590,smtWeld,smtWeld,SMT,10,4,0.0,expand
@@ -3517,7 +3517,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 18199131,manualWeld,manualWeld,THT,5,5,0.0,expand
 18199135,manualWeld,manualWeld,THT,5,5,0.0,expand
 18199142,smtWeld,smtWeld,SMT,5,2,0.0,expand
-18199143,manualWeld,manualWeld,THT,5,5,0.0,expand
+18199143,smtWeld,smtWeld,SMT,5,2,0.0,expand
 18199145,smtWeld,smtWeld,SMT,2,0,0.0,expand
 18199162,manualWeld,manualWeld,THT,5,5,0.0,expand
 18199165,manualWeld,manualWeld,THT,5,5,0.0,expand
@@ -3542,8 +3542,8 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 19077542,smtWeld,smtWeld,SMT,5,2,0.0,expand
 19077544,smtWeld,smtWeld,SMT,15,4,0.0,expand
 19077547,smtWeld,smtWeld,SMT,5,4,0.0,expand
-19077550,manualWeld,manualWeld,THT,5,5,0.0,expand
-19077588,manualWeld,manualWeld,THT,5,5,0.0,expand
+19077550,smtWeld,smtWeld,SMT,5,4,0.0,expand
+19077588,smtWeld,smtWeld,SMT,5,2,0.0,expand
 19077591,manualWeld,manualWeld,THT,5,5,0.0,expand
 19077596,manualWeld,manualWeld,THT,5,5,0.0,expand
 19627026,manualWeld,manualWeld,THT,5,5,0.0,expand
