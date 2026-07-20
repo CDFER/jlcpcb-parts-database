@@ -2,6 +2,7 @@ import pandas as pd
 import sqlite3
 import os
 from datetime import datetime, timezone
+import json
 
 os.chdir("db_build")
 
@@ -105,6 +106,25 @@ df_sorted = df_sorted.sort_values(by=["category", "subcategory", "package"])
 
 # Remove parts with missing price fields
 df_sorted = df_sorted.drop(df_sorted[df_sorted["price"] == "[]"].index)
+
+# Description column is sometimes empty
+# Consider the description in extra as the authoritative source and use
+# column "description" only in case extra would not contain it.
+# This has been inspired by https://github.com/Bouni/kicad-jlcpcb-tools/pull/670
+def _extract_description(value):
+    if not isinstance(value, str) or not value:
+        return None
+    try:
+        data = json.loads(value)
+    except (ValueError, TypeError):
+        return None
+    if isinstance(data, dict):
+        return data.get("description")
+    return None
+
+if "extra" in df_sorted.columns:
+    extracted = df_sorted["extra"].apply(_extract_description)
+    df_sorted["description"] = extracted.where(extracted.notna(), df_sorted.get("description"))
 
 # Save sorted DataFrame to CSV
 df_sorted.to_csv("jlcpcb-components-basic-preferred.csv", index=False, header=True)

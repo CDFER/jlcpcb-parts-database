@@ -149,7 +149,7 @@ total_unseen_components = 0
 while empty_page == False and page < 64:
     request_json = {
         "currentPage": page,
-        "pageSize": 100,
+        "pageSize": 25,
         "keyword": None,
         "componentLibraryType": "base",
         "preferredComponentFlag": True,
