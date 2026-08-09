@@ -7,7 +7,7 @@ import json
 os.chdir("db_build")
 
 # Rename the database file
-# os.rename("cache.sqlite3", f"jlcpcb-components.sqlite3")
+os.rename("cache.sqlite3", f"jlcpcb-components.sqlite3")
 
 initial_db_size = os.path.getsize("jlcpcb-components.sqlite3")
 print(f"Initial SQLite Database Size: {initial_db_size / (1024 ** 3):.2f} GiB")
