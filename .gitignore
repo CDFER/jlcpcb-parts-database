@@ -1,4 +1,5 @@
-# python enviroment folder
+# python
+__pycache__/
 .venv
 
 # unzipped database is too large for github (github limit is 100mib)

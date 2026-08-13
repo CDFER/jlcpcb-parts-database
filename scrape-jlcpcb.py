@@ -8,6 +8,7 @@ import csv
 import time
 import random
 from datetime import datetime, timezone
+from typing import Any
 
 # Get the current date in UTC
 today_date_str = datetime.now(tz=timezone.utc).strftime("%Y/%m/%d")
@@ -35,7 +36,7 @@ headers = {
 }
 
 
-def update_component(components, lcsc_code):
+def update_component(components: list[dict[str, str]], lcsc_code: str) -> bool:
     """
     Update the component list with the given LCSC code.
     If the component already exists, update the 'Last Seen' field.
@@ -52,17 +53,20 @@ def update_component(components, lcsc_code):
     return True
 
 
-def get_part_data(lcsc_number: int) -> dict:
+def get_part_data(lcsc_number: int) -> dict[str, Any]:
     """Get data for a given LCSC number from the API."""
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
     }
 
-    response = requests.get(
-        f"https://cart.jlcpcb.com/shoppingCart/smtGood/getComponentDetail?componentCode=C{lcsc_number}",
-        headers=headers,
-        timeout=10,
-    )
+    try:
+        response = requests.get(
+            f"https://cart.jlcpcb.com/shoppingCart/smtGood/getComponentDetail?componentCode=C{lcsc_number}",
+            headers=headers,
+            timeout=10,
+        )
+    except requests.exceptions.RequestException as error:
+        return {"success": False, "msg": f"request failed: {error}"}
 
     if response.status_code != requests.codes.ok:
         return {"success": False, "msg": "non-OK HTTP response status"}
@@ -84,7 +88,7 @@ def get_part_data(lcsc_number: int) -> dict:
     return {"success": True, "data": data}
 
 
-def get_part_data_and_update_csv(lcsc_number, rows):
+def get_part_data_and_update_csv(lcsc_number: int, rows: list[list[Any]]) -> list[list[Any]]:
     response = get_part_data(lcsc_number)
 
     if not response["success"]:
@@ -138,16 +142,17 @@ print(f"ComponentList.csv: {os.path.getsize(file_location)/1024:.1f}KiB")
 # Load existing components from the CSV file
 with open(file_location, "r", newline="", encoding="utf-8") as f:
     reader = csv.DictReader(f)
-    components = list(reader)
+    component_records: list[dict[str, str]] = list(reader)
 
-print(f"Loaded {len(components)} components from {file_location}")
+print(f"Loaded {len(component_records)} components from {file_location}")
 
 empty_page = False
 page = 1
 total_unseen_components = 0
 
 while empty_page == False and page < 64:
-    request_json = {
+    page_components: list[str] = []
+    request_json: dict[str, Any] = {
         "currentPage": page,
         "pageSize": 25,
         "keyword": None,
@@ -170,7 +175,7 @@ while empty_page == False and page < 64:
         page_components = re.findall(r'"componentCode":"C(\d+)"', response.text)
         for component in page_components:
             lcsc_code = component
-            if update_component(components, lcsc_code):
+            if update_component(component_records, lcsc_code):
                 unseen_components += 1
                 total_unseen_components += 1
     else:
@@ -186,12 +191,12 @@ while empty_page == False and page < 64:
 
     time.sleep(3)  # Pause (try to not get rate limited)
 
-print(f"Added {total_unseen_components} new components, current total components {len(components)}")
+print(f"Added {total_unseen_components} new components, current total components {len(component_records)}")
 
 with open(file_location, "w", newline="") as f:
-    writer = csv.DictWriter(f, fieldnames=components[0].keys())
+    writer = csv.DictWriter(f, fieldnames=component_records[0].keys())
     writer.writeheader()
-    writer.writerows(components)
+    writer.writerows(component_records)
 
 # Print the final size of the component list file
 print(f"ComponentList.csv: {os.path.getsize(file_location)/1024:.1f}KiB")
@@ -202,7 +207,7 @@ assembly_file_location = os.path.join("scraped", "assembly-details.csv")
 
 with open(list_file_location, "r", newline="") as file:
     reader = csv.reader(file)
-    components = [row[0] for row in reader][1:]
+    component_codes: list[str] = [row[0] for row in reader][1:]
 
 with open(assembly_file_location, "r", newline="") as file:
     reader = csv.reader(file)
@@ -229,15 +234,15 @@ except FileNotFoundError:
 
 with open(assembly_file_location, "r", newline="") as read_file:
     reader = csv.reader(read_file)
-    rows = [row for row in reader]
+    rows: list[list[Any]] = [row for row in reader]
 
 # Check for parts not in ComponentList.csv
-for lcsc_number in components:
+for lcsc_number in component_codes:
     if lcsc_number not in assembly_components:
         rows = get_part_data_and_update_csv(int(lcsc_number), rows)
 
-# Randomly check components already in the list
-random_components = random.sample([c for c in components if c != ""], 400)
+# Randomly check 100 components already in the list
+random_components = random.sample([c for c in component_codes if c != ""], 100)
 for lcsc_number in random_components:
     rows = get_part_data_and_update_csv(int(lcsc_number), rows)
 

@@ -3,6 +3,7 @@ import sqlite3
 import os
 from datetime import datetime, timezone
 import json
+from typing import cast
 
 os.chdir("db_build")
 
@@ -16,8 +17,12 @@ conn = sqlite3.connect("jlcpcb-components.sqlite3")
 try:
     cur = conn.cursor()
 
-    cur.execute("PRAGMA journal_mode = WAL")  # Enable Write-Ahead Logging (WAL) for improved performance and concurrency
-    cur.execute("PRAGMA synchronous = NORMAL")  # Set the synchronous mode to NORMAL, which balances safety and performance
+    cur.execute(
+        "PRAGMA journal_mode = WAL"
+    )  # Enable Write-Ahead Logging (WAL) for improved performance and concurrency
+    cur.execute(
+        "PRAGMA synchronous = NORMAL"
+    )  # Set the synchronous mode to NORMAL, which balances safety and performance
     cur.execute("PRAGMA temp_store = MEMORY")  # Store temporary tables and indices in memory for faster access
     cur.execute("PRAGMA mmap_size = 536870912")  # Set the maximum memory map size to 512MiB
 
@@ -27,8 +32,7 @@ try:
     print(f"Deleted {cur.rowcount} jlc_components with low stock")
 
     # Create an FTS (Full-Text Search) index on multiple columns (helps to speed up searching the database)
-    cur.execute(
-        """
+    cur.execute("""
         CREATE VIRTUAL TABLE jlc_components_fts USING fts5(
             lcsc,
             mfr,
@@ -37,8 +41,7 @@ try:
             datasheet,
             content='jlc_components'
         );
-    """
-    )
+    """)
     conn.commit()
 
     # Reindex database to reduce file size
@@ -54,8 +57,14 @@ try:
     df = pd.read_csv(file_location)
 
     # Convert date columns to datetime with UTC timezone
-    df["First Seen"] = pd.to_datetime(df["First Seen"], format="%Y/%m/%d", utc=True)
-    df["Last Seen"] = pd.to_datetime(df["Last Seen"], format="%Y/%m/%d", utc=True)
+    first_seen = [
+        datetime.strptime(value, "%Y/%m/%d").replace(tzinfo=timezone.utc) for value in df["First Seen"].astype(str)
+    ]
+    last_seen = [
+        datetime.strptime(value, "%Y/%m/%d").replace(tzinfo=timezone.utc) for value in df["Last Seen"].astype(str)
+    ]
+    df["First Seen"] = pd.Series(first_seen, index=df.index, dtype="datetime64[ns, UTC]")
+    df["Last Seen"] = pd.Series(last_seen, index=df.index, dtype="datetime64[ns, UTC]")
 
     # Calculate time differences
     now = datetime.now(timezone.utc)
@@ -63,7 +72,9 @@ try:
     df["Days Since Last Seen"] = (now - df["Last Seen"]).dt.days
 
     # Filter components
-    component_codes = df[(df["Days Since First Seen"] >= 1) & (df["Days Since Last Seen"] < 2)]["lcsc"].astype(int).tolist()
+    component_codes = (
+        df[(df["Days Since First Seen"] >= 1) & (df["Days Since Last Seen"] < 2)]["lcsc"].astype(int).tolist()
+    )
 
     preferred_parts_corrected = 0
     for code in component_codes:
@@ -101,12 +112,10 @@ try:
     print(f"Optimized Database Size: {optimized_db_size / (1024 ** 3):.2f} GiB")
 
     # Retrieve basic/preferred components ($0 for loading feeders) and exclude "0201" package
-    cur.execute(
-        """
+    cur.execute("""
         SELECT * FROM jlc_components 
         WHERE (basic > 0 OR preferred > 0) AND package != '0201';
-    """
-    )
+    """)
     filtered_components = cur.fetchall()
 
     # Create Pandas DataFrame
@@ -131,7 +140,7 @@ try:
     # Consider the description in extra as the authoritative source and use
     # column "description" only in case extra would not contain it.
     # This has been inspired by https://github.com/Bouni/kicad-jlcpcb-tools/pull/670
-    def _extract_description(value):
+    def _extract_description(value: object) -> str | None:
         if not isinstance(value, str) or not value:
             return None
         try:
@@ -139,12 +148,23 @@ try:
         except (ValueError, TypeError):
             return None
         if isinstance(data, dict):
-            return data.get("description")
+            typed_data = cast(dict[str, object], data)
+            description = typed_data.get("description")
+            return description if isinstance(description, str) else None
         return None
 
     if "extra" in df_sorted.columns:
-        extracted = df_sorted["extra"].apply(_extract_description)
-        df_sorted["description"] = extracted.where(extracted.notna(), df_sorted.get("description"))
+        extra_values = cast(list[object], df_sorted["extra"].tolist())
+        existing_values = (
+            cast(list[object], df_sorted["description"].tolist())
+            if "description" in df_sorted.columns
+            else [None] * len(extra_values)
+        )
+        merged_descriptions: list[str | None] = [
+            extracted if extracted is not None else existing if isinstance(existing, str) else None
+            for extracted, existing in zip((_extract_description(value) for value in extra_values), existing_values)
+        ]
+        df_sorted["description"] = merged_descriptions
 
     # Save sorted DataFrame to CSV
     df_sorted.to_csv("jlcpcb-components-basic-preferred.csv", index=False, header=True)
