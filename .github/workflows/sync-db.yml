@@ -101,6 +101,13 @@ jobs:
           # Run the Python script to generate the database files
           python3 generate-database.py
 
+      - name: Validate generated CSV structure
+        uses: softpeanut/csv-preflight-action@eb04c527a46ce3bc8bfc711fde8e93ca947597ae
+        with:
+          path: db_build/jlcpcb-components-basic-preferred.csv
+          normalized_path: ${{ runner.temp }}/jlcpcb-components.normalized.csv
+          report_path: ${{ runner.temp }}/jlcpcb-components.issues.csv
+
       - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
