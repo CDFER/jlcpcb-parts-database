@@ -426,7 +426,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 25118,smtWeld,smtWeld,SMT,20,12,0.0,expand
 25120,smtWeld,smtWeld,SMT,20,10,0.0,base
 25123,smtWeld,smtWeld,SMT,20,12,0.0,base
-25125,smtWeld,smtWeld,SMT,20,10,0.0,expand
+25125,smtWeld,smtWeld,SMT,20,14,0.0,expand
 25130,smtWeld,smtWeld,SMT,20,10,0.0,expand
 25133,smtWeld,smtWeld,SMT,20,10,0.0,expand
 25190,smtWeld,smtWeld,SMT,20,10,0.0,expand
@@ -539,7 +539,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 59461,smtWeld,smtWeld,SMT,20,10,0.0,base
 61063,smtWeld,smtWeld,SMT,1,0,0.0,base
 64885,smtWeld,smtWeld,SMT,15,10,0.0,expand
-64886,smtWeld,smtWeld,SMT,20,8,0.0,expand
+64886,smtWeld,smtWeld,SMT,20,10,0.0,expand
 64898,smtWeld,smtWeld,SMT,20,10,0.0,base
 68035,smtWeld,smtWeld,SMT,5,4,0.0,expand
 68978,smtWeld,smtWeld,SMT,10,5,0.0,base
@@ -973,7 +973,7 @@ lcsc,Assembly Type,Assembly Type Batch,Assembly Process,Min Order Qty,Attrition 
 7420348,smtWeld,smtWeld,SMT,5,4,0.0,expand
 7420349,smtWeld,smtWeld,SMT,5,4,0.0,expand
 7420350,smtWeld,smtWeld,SMT,20,10,0.0,expand
-7420351,smtWeld,smtWeld,SMT,10,5,0.0,expand
+7420351,smtWeld,smtWeld,SMT,10,8,0.0,expand
 7420352,smtWeld,smtWeld,SMT,10,5,0.0,expand
 7420353,smtWeld,smtWeld,SMT,10,5,0.0,expand
 7420354,smtWeld,smtWeld,SMT,10,5,0.0,expand
